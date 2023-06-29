@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find lyontech_ur5e_rq85_moveit)/urdf/ur5_robotiq85_gripper.urdf.xacro" />
+
+
+  <joint name="base_arm_coupler_joint" type="fixed">
+    <origin xyz="0.12 0 0.25" rpy="0 0 0" />
+    <parent link="base_link"/>
+    <child link="ur5e_base_link"/>
+  </joint>
+
+</robot>

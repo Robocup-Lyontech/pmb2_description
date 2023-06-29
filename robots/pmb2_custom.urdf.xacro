@@ -27,6 +27,9 @@
   <xacro:base_sensors name="base" hokuyo="true" sonars="${has_sonar}" microphone="true" tof="true"/>
   
   <xacro:include filename="$(find pmb2_description)/urdf/column/column.urdf.xacro" />
+
+  <xacro:include filename="$(find pmb2_description)/urdf/arm/arm.urdf.xacro" />
+  <!--<xacro:ur5e_robot prefix="ur5e" />-->
 </robot>
 
 
