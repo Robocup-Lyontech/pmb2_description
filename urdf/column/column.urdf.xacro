@@ -17,6 +17,56 @@
     </visual>
   </link>
 
+<link name="controlleur_ur5a">
+    <visual>
+      <geometry>
+        <box size="0.08 0.1 1.5"/>
+      </geometry>
+      <material name="grey">
+	      <color rgba="0.52 0.53 0.54 1.0"/>
+      </material>
+      <origin rpy="0 0 0" xyz="0 0 0.75"/>
+    </visual>
+  </link>  
+
+
+<link name="jetson_n_power">
+    <visual>
+      <geometry>
+        <box size="0.06 0.06 1.5"/>
+      </geometry>
+      <material name="grey">
+	      <color rgba="0.52 0.53 0.54 1.0"/>
+      </material>
+      <origin rpy="0 0 0" xyz="0 0 0.75"/>
+    </visual>
+  </link>    
+
+<link name="controlleur_back">
+    <visual>
+      <geometry>
+        <box size="0.16 0.16 1.5"/>
+      </geometry>
+      <material name="grey">
+	      <color rgba="0.52 0.53 0.54 1.0"/>
+      </material>
+      <origin rpy="0 0 0" xyz="0 0 0.75"/>
+    </visual>
+  </link>    
+
+
+  <link name="AU">
+    <visual>
+      <geometry>
+        <box size="0.09 0.09 0.1"/>
+      </geometry>
+      <material name="grey">
+	      <color rgba="0.52 0.53 0.54 1.0"/>
+      </material>
+      <origin rpy="0 0 0" xyz="0 0 0.75"/>
+    </visual>
+  </link>    
+
   <link name="vertical_cart">
     <visual>
       <geometry>
@@ -29,6 +79,7 @@
     </visual>
   </link>
 
+<!--
   <link name="horizontal_arm">
     <visual>
       <geometry>
@@ -40,7 +91,9 @@
       <origin rpy="0 0 0" xyz="0.12 0 0"/>
     </visual>
   </link>
+-->
 
+  <!--
   <link name="arm_cylender">
     <visual>
       <geometry>
@@ -52,6 +105,7 @@
       <origin rpy="0 0 0" xyz="0 0 0.2"/>
     </visual>
   </link>
+ 
 
   <link name="gripper">
     <visual>
@@ -64,6 +118,7 @@
       <origin rpy="1.5708 0 0" xyz="-0.07 0.025 0.4"/>
     </visual>
   </link>
+   -->
 
   <link name="screen">
     <visual>
@@ -73,7 +128,7 @@
       <material name="black">
 	      <color rgba="0 0 0 1.0"/>
       </material>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="0 0 0" xyz="0 0.29 0"/>
     </visual>
   </link>
 
@@ -85,7 +140,7 @@
       <material name="black">
 	      <color rgba="0 0 0 1.0"/>
       </material>
-      <origin rpy="-0.3 0 0" xyz="0 0 0"/>
+      <origin xyz="0 0.26 0" rpy="-0.6457 0 0" />
     </visual>
   </link>
 
@@ -97,7 +152,7 @@
       <material name="black">
 	      <color rgba="0 0 0 1.0"/>
       </material>
-      <origin rpy="0.2 0 0" xyz="0 0 0"/>
+      <origin rpy="0.65 0 0" xyz="0 0 0"/>
     </visual>
   </link>
 
@@ -119,8 +174,32 @@
   <joint name="joint_1" type="fixed">
     <parent link="base_link"/>
     <child link="vertical_mast"/>
-    <origin xyz="0 0 0.2" rpy="0 0 -1.57"/>
+    <origin xyz="-0.07 0 0.2" rpy="0 0 -1.57"/>
   </joint>
+
+  <joint name="joint_1b" type="fixed">
+    <parent link="vertical_mast"/>
+    <child link="controlleur_ur5a"/>
+    <origin xyz="0.1 0 0" rpy="0 0 0"/>
+  </joint>  
+
+  <joint name="joint_back" type="fixed">
+    <parent link="vertical_mast"/>
+    <child link="controlleur_back"/>
+    <origin xyz="0 -0.08 0" rpy="0 0 0"/>
+  </joint>  
+
+  <joint name="joint_1c" type="fixed">
+    <parent link="vertical_mast"/>
+    <child link="jetson_n_power"/>
+    <origin xyz="-0.07 0 0" rpy="0 0 0"/>
+  </joint>    
+
+  <joint name="joint_1d" type="fixed">
+    <parent link="vertical_mast"/>
+    <child link="AU"/>
+    <origin xyz="-0.09 0 0" rpy="0 0 0"/>
+  </joint>     
 
   <joint name="joint_2" type="fixed">
  <!-- <joint name="joint_2" type="prismatic">-->
@@ -131,28 +210,28 @@
     <limit lower="0.22" upper="1.2" effort="10" velocity="0.6"/> -->
   </joint>
 
-  <!--<joint name="joint_3" type="revolute">-->
+  <!--<joint name="joint_3" type="revolute">
   <joint name="joint_3" type="fixed">
     <parent link="vertical_cart"/>
     <child link="horizontal_arm"/>
     <origin xyz="0.12 0 0" rpy="0 0 0"/>
-    <!--<axis xyz="0 0 1" />
-    <limit lower="-1" upper="1" effort="10" velocity="0.8"/>-->
-  </joint>
+    <limit lower="-1" upper="1" effort="10" velocity="0.8"/>
+  </joint>-->
 
   <!--<joint name="joint_4" type="revolute">-->
+  <!--
   <joint name="joint_4" type="fixed">
     <parent link="horizontal_arm"/>
     <child link="arm_cylender"/>
     <origin xyz="0.24 0 0" rpy="3.14159 0 0"/>
-    <!--<axis xyz="1 0 0" />
-    <limit lower="0" upper="3" effort="10" velocity="0.8"/>-->
+    <limit lower="0" upper="3" effort="10" velocity="0.8"/>
   </joint> 
+  -->
 
   <joint name="joint_5" type="fixed">
     <parent link="vertical_mast"/>
     <child link="screen"/>
-    <origin xyz="0 0.08 1.4" rpy="0 0 0"/>
+    <origin xyz="0 0 1.4" rpy="0 0 0"/>
   </joint>
   
   <joint name="joint_6" type="fixed">
@@ -164,15 +243,15 @@
   <joint name="joint_7" type="fixed">
     <parent link="vertical_mast"/>
     <child link="HRI_screen"/>
-    <origin xyz="-0.1 0.1 1" rpy="0 0 0"/>
+    <origin xyz="0 0.24 1" rpy="0 0 0"/>
   </joint>
-
+<!--
   <joint name="joint_8" type="fixed">
     <parent link="arm_cylender"/>
     <child link="gripper"/>
     <origin xyz="0 0 0" rpy="0 0 0"/>
   </joint>
-
+-->
 
  <xacro:sensor_d455 name="col_camera_sensor_d455" parent="vertical_mast" >
     <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -182,7 +261,8 @@
   <joint name="col_realsense" type="fixed">
     <parent link="vertical_mast"/>
     <child link="realsense_fake_link"/>
-    <origin xyz="0 0.22 0.92" rpy="-0.837758 0 0"/>
+    <origin xyz="0 0.27 0.92" rpy="-0.837758 0 0"/>
+    <!--<origin xyz="0 0.22 0.92" rpy="-0.837758 0 0"/>-->
   </joint>
 
 
