@@ -26,7 +26,7 @@
   <!-- Now we can start using the macros included above to define the actual robot -->
   <xacro:base_sensors name="base" hokuyo="true" sonars="${has_sonar}" microphone="true" tof="true"/>
 
-  <xacro:include filename="$(find pmb2_description)/urdf/arm/arm.urdf.xacro"/>
+  <!--<xacro:include filename="$(find pmb2_description)/urdf/arm/arm.urdf.xacro"/>-->
   
   <xacro:include filename="$(find pmb2_description)/urdf/column/column.urdf.xacro" />
 
